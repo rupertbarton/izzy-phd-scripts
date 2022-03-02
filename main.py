@@ -5,10 +5,12 @@ from sympy import *
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--n", type=int, default=2)
+parser.add_argument("--file_name", type=str, default="result")
 
 args = parser.parse_args()
 
 n = args.n
+file_name = args.file_name
 
 #inputs are n, i, and k
 
@@ -51,7 +53,7 @@ def calculate_sum(n, k, i, b=q**2):
 
 def main(n):
     k = 0
-    results = [[None] * (n+1)] * (n+1)
+    results = [ [ None for i in range(n+1) ] for j in range(n+1) ]
 
     while k <= n:
         i = 0
@@ -61,3 +63,16 @@ def main(n):
         k+=1
 
     return results
+
+
+result_table = main(n)
+
+
+Path('./output').mkdir(parents=True, exist_ok=True)
+f = open(f'output/{file_name}.csv', 'w+')
+writer = csv.writer(f)
+
+for i in result_table:
+    writer.writerow(i)
+
+print(f"Result has been generated and stored in output/{file_name}.csv")
