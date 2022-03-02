@@ -1,6 +1,14 @@
 import csv
+import argparse
 from pathlib import Path
 from sympy import *
+
+parser = argparse.ArgumentParser()
+parser.add_argument("--n", type=int, default=2)
+
+args = parser.parse_args()
+
+n = args.n
 
 #inputs are n, i, and k
 
