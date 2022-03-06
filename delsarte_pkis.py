@@ -33,12 +33,12 @@ def calculate_normal_binomial(n, k):
 
 def calculate_single_value(n, k, i, j, b=q**2):
     return simplify(
-        -1**(k-j) *
-        b**(calculate_normal_binomial(k-j, 2)) *
+        (-1)**(k-j) *
+        (b**calculate_normal_binomial(k-j, n)) *
         calculate_product_function(b, n-j, n-k) *
-        calculate_product_function(b, n-i, n-j) *
-        q**((2*n*(2*n -1))/(2*n)
-        )
+        calculate_product_function(b, n-i, j) *
+        (q**((2*n*(2*n -1))/(2*n)))**j
+        
     )
 
 def calculate_sum(n, k, i, b=q**2):
@@ -58,7 +58,7 @@ def main(n):
     while k <= n:
         i = 0
         while i <= n:
-            results[k][i] = calculate_sum(n,k,i)
+            results[i][k] = calculate_sum(n,k,i)
             i+=1
         k+=1
 
