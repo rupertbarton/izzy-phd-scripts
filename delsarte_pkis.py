@@ -34,7 +34,7 @@ def calculate_normal_binomial(n, k):
 def calculate_single_value(n, k, i, j, b=q**2.0):
     return simplify(
         (-1)**(k-j) *
-        (b**calculate_normal_binomial(k-j, n)) *
+        (b**calculate_normal_binomial(k-j, 2)) *
         calculate_product_function(b, n-j, n-k) *
         calculate_product_function(b, n-i, j) *
         (q**((2.0*n*(2.0*n -1))/(2.0*n)))**j
